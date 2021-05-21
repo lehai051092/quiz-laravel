@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.copyDirectory('resources/assets/css', 'public/admin/css')
-    .copyDirectory('resources/assets/js', 'public/admin/js')
-    .copyDirectory('resources/assets/images', 'public/admin/images')
-    .copyDirectory('resources/assets/fonts', 'public/admin/fonts').version();
+mix.copyDirectory('resources/assets/admin/css', 'public/admin/css')
+    .copyDirectory('resources/assets/admin/js', 'public/admin/js')
+    .copyDirectory('resources/assets/admin/images', 'public/admin/images')
+    .copyDirectory('resources/assets/admin/fonts', 'public/admin/fonts').version();
