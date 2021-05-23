@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email', 128)->unique();
             $table->string('password', 128);
             $table->string('image_path')->nullable();
+            $table->tinyInteger('status')->default(0);
+            $table->string('group', 10)->default('admin');
             $table->softDeletes();
             $table->timestamps();
         });

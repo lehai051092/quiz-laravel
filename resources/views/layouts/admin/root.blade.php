@@ -11,23 +11,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @yield('css')
 </head>
 <body>
-<section id="container">
-    @include('components.header')
-    @include('components.sidebar')
-    <section id="main-content">
-        <section class="wrapper">
-            <div class="row">
-                <div class="panel-body">
-                    <div class="col-md-12 w3ls-graph">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-        </section>
-        @include('components.footer')
-    </section>
-</section>
-    @include('components.links.bottom-theme')
-    @yield('js')
+@yield('content')
+@include('components.links.bottom-theme')
+@yield('js')
 </body>
 </html>

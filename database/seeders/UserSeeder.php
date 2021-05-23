@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,11 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ql_users')->insert([
-            'first_name' => 'Lee',
-            'last_name' => 'Vu',
-            'email' => 'admin@gmail.com',
-            'password' => md5('123123')
-        ]);
+        $user = new  User();
+        $user->first_name = 'Lee';
+        $user->last_name = 'Vu';
+        $user->email = 'admin@gmail.com';
+        $user->password = bcrypt('123123');
+        $user->status = 1;
+
+        $user->save();
     }
 }
