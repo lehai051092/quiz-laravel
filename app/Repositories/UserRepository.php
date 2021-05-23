@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Illuminate\Database\Query\Builder;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -24,11 +23,48 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @param $request
+     * @param $limit
      * @return mixed
      */
-    public function getUserLogin($request)
+    public function getPaginateUser($limit)
     {
-        return $this->user->where('email', $request->email)->where('password', bcrypt($request->password))->first();
+        return $this->user->paginate($limit);
+    }
+
+    /**
+     * @param $option
+     * @return mixed
+     */
+    public function addUser($option)
+    {
+        return $this->user->create($option);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        return $this->user->findOrFail($id);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteById($id)
+    {
+        return $this->findById($id)->delete();
+    }
+
+    /**
+     * @param $id
+     * @param $option
+     * @return mixed
+     */
+    public function editById($id, $option)
+    {
+        return $this->findById($id)->update($option);
     }
 }

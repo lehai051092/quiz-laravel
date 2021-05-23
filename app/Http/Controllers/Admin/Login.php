@@ -18,11 +18,6 @@ class Login extends Controller
     private $guard;
 
     /**
-     * @var UserServiceInterface
-     */
-    protected $userService;
-
-    /**
      * @var Credentials
      */
     protected $credentials;
@@ -34,17 +29,14 @@ class Login extends Controller
 
     /**
      * Index constructor.
-     * @param UserServiceInterface $userService
      * @param Credentials $credentials
      * @param Session $session
      */
     public function __construct(
-        UserServiceInterface $userService,
         Credentials $credentials,
         Session $session
     ) {
         $this->guard = Auth::guard('admin');
-        $this->userService = $userService;
         $this->credentials = $credentials;
         $this->session = $session;
     }

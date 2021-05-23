@@ -6,7 +6,9 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="{{ asset('public/admin/images/2.png')  }}">
-                <span class="username">{{ $user->first_name . ' ' . $user->last_name }}</span>
+                <span class="username">
+                    {{ \Illuminate\Support\Facades\Auth::user()->first_name . ' ' . \Illuminate\Support\Facades\Auth::user()->last_name }}
+                </span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">

@@ -8,8 +8,8 @@
                         <span>Users</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">All user</a></li>
-                        <li><a href="glyphicon.html">Add user</a></li>
+                        <li><a href="{{ route('admin.all') }}">All user</a></li>
+                        <li><a href="{{ route('admin.add') }}">Add user</a></li>
                     </ul>
                 </li>
             </ul>

@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
+use App\Helpers\User\UserOption;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\Interfaces\UserServiceInterface;
-use Illuminate\Support\Facades\Session;
 
 class UserService implements UserServiceInterface
 {
@@ -14,40 +14,68 @@ class UserService implements UserServiceInterface
     protected $userRepository;
 
     /**
-     * @var Session
+     * @var UserOption
      */
-    protected $session;
+    protected $userOption;
 
     /**
      * UserService constructor.
      * @param UserRepositoryInterface $userRepository
-     * @param Session $session
+     * @param UserOption $userOption
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        Session $session
+        UserOption $userOption
     ) {
         $this->userRepository = $userRepository;
-        $this->session = $session;
+        $this->userOption = $userOption;
+    }
+
+    /**
+     * @param $limit
+     * @return mixed
+     */
+    public function getPaginateUser($limit)
+    {
+        return $this->userRepository->getPaginateUser($limit);
     }
 
     /**
      * @param $request
-     * @return bool
+     * @return mixed
      */
-    public function checkUserLogin($request): bool
+    public function addUser($request)
     {
-        $user = $this->userRepository->getUserLogin($request);
+        $option = $this->userOption->optionArray($request);
+        return $this->userRepository->addUser($option);
+    }
 
-        if ($user) {
-            $this->session::put('user_id', $user->id);
-            $this->session::put('user_name', $user->name);
-            $this->session::put('success', $user->name);
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteById($id)
+    {
+        return $this->userRepository->deleteById($id);
+    }
 
-            return true;
-        }
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        return $this->userRepository->findById($id);
+    }
 
-        $this->session::put('error', "Re-enter email and password!!! Something went wrong.");
-        return false;
+    /**
+     * @param $id
+     * @param $request
+     * @return mixed
+     */
+    public function editById($id, $request)
+    {
+        $option = $this->userOption->optionArray($request);
+        return $this->userRepository->editById($id, $option);
     }
 }
