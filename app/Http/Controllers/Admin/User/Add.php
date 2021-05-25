@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\User;
 
+use App\Http\Requests\FormAddSubmitRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class Add extends UserAbstract
 {
@@ -19,10 +19,10 @@ class Add extends UserAbstract
     }
 
     /**
-     * @param Request $request
+     * @param FormAddSubmitRequest $request
      * @return RedirectResponse
      */
-    public function postAdd(Request $request): RedirectResponse
+    public function postAdd(FormAddSubmitRequest $request): RedirectResponse
     {
         $this->userService->addUser($request);
         return redirect()->route('admin.all');

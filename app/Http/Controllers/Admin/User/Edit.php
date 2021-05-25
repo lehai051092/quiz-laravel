@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\User;
 
+use App\Http\Requests\FormEditSubmitRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class Edit extends UserAbstract
 {
@@ -22,10 +22,10 @@ class Edit extends UserAbstract
 
     /**
      * @param $id
-     * @param Request $request
+     * @param FormEditSubmitRequest $request
      * @return RedirectResponse
      */
-    public function postEdit($id, Request $request): RedirectResponse
+    public function postEdit($id, FormEditSubmitRequest $request): RedirectResponse
     {
         $this->userService->editById($id, $request);
         return redirect()->route('admin.all');

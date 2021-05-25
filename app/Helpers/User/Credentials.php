@@ -15,7 +15,7 @@ class Credentials extends OptionAbstract {
     {
         return [
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'status' => ConstVariable::ACTIVE_STATUS
         ];
     }

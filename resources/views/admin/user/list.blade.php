@@ -6,36 +6,36 @@
                 List User
             </div>
             <div class="table-responsive">
-                <table class="table table-striped b-t b-light">
+                <table class="table table-striped b-t b-light text-center">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Image</th>
-                        <th>Status</th>
-                        <th>Group</th>
-                        <th style="width:30px;"></th>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Group</th>
+                        <th style="width:30px;" class="text-center"></th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($users as $key => $user)
                         <tr>
-                            <td>{{ ++$key }}</td>
-                            <td>{{ $userName = $user->first_name . ' ' . $user->last_name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>
-                                <img src="{{ $user->image_path }}" alt="{{ $userName }}">
+                            <td class="v-middle">{{ ++$key }}</td>
+                            <td class="v-middle">{{ $userName = $user->first_name . ' ' . $user->last_name }}</td>
+                            <td class="v-middle">{{ $user->email }}</td>
+                            <td class="v-middle">
+                                <img src="{{ asset('public/' . $user->image_path) }}" alt="{{ $userName }}" width="100" height="100">
                             </td>
-                            <td>
+                            <td class="v-middle">
                                 @if($user->status == \App\Helpers\ConstVariable::ACTIVE_STATUS)
                                     Active
                                 @else
                                     Disable
                                 @endif
                             </td>
-                            <td>{{ $user->group }}</td>
-                            <td>
+                            <td class="v-middle">{{ $user->group }}</td>
+                            <td class="v-middle">
                                 <a href="{{ route('admin.edit', ['id' => $user->id]) }}" class="active">
                                     <i class="fa fa-edit text-success text-active"></i>
                                 </a>
