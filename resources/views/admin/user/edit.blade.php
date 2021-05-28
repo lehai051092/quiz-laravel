@@ -1,4 +1,10 @@
 @extends('layouts.admin.admin')
+@section('title')
+    <title>Edit Form</title>
+@endsection
+@section('css')
+    <link href="{{ asset('public/admin/css/quiz/upload.css')  }}" rel="stylesheet">
+@endsection
 @section('section')
     <div class="form-w3layouts">
         <div class="row">
@@ -12,6 +18,24 @@
                             <form role="form" action="{{ route('admin.post.edit', ['id' => $user->id]) }}"
                                   enctype="multipart/form-data" method="post">
                                 @csrf
+                                <div class="form-group image-upload">
+                                    <label>Upload image</label>
+                                    <img id='img-upload' class="img-upload"
+                                         src="{{ asset(($user->image_path) ? 'public/' . $user->image_path : '') }}"/>
+                                    <input type="text" name="image_path_old" value="{{ $user->image_path }}" readonly
+                                           style="display: none">
+                                    <label>
+                                        <input type="checkbox" name="delete_image"
+                                               value="{{ App\Helpers\ConstVariable::DELETE_IMAGE_UPLOAD }}">
+                                        Delete Image
+                                    </label>
+                                    <input type="file" name="image_path_new" value=""
+                                           @if($errors->has('image_path')) style="border: solid red" @endif>
+                                    <p class="help-block">Upload type image, mimes:jpeg,jpg,png and 2Mb</p>
+                                    @if($errors->has('image_path'))
+                                        <p class="text-danger">{{$errors->first('image_path')}}</p>
+                                    @endif
+                                </div>
                                 <div class="form-group">
                                     <label>First name</label>
                                     <input type="text" class="form-control" name="first_name"
@@ -32,22 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Email address</label>
-                                    <input type="email" class="form-control" name="email" value="{{ $user->email }}"
-                                           readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password"
-                                           value="{{ $user->password }}" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Image</label>
-                                    <input type="file" name="image_path"
-                                           @if($errors->has('image_path')) style="border: solid red" @endif>
-                                    @if($errors->has('image_path'))
-                                        <p class="text-danger">{{$errors->first('image_path')}}</p>
-                                    @endif
-                                    <p class="help-block">Upload only images.</p>
+                                    <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
@@ -95,4 +104,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script src="{{ asset('public/admin/js/quiz/upload.js') }}"></script>
 @endsection

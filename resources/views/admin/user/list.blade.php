@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin')
+@section('title')
+    <title>List Form</title>
+@endsection
 @section('section')
     <div class="table-agile-info">
         <div class="panel panel-default">
@@ -25,7 +28,8 @@
                             <td class="v-middle">{{ $userName = $user->first_name . ' ' . $user->last_name }}</td>
                             <td class="v-middle">{{ $user->email }}</td>
                             <td class="v-middle">
-                                <img src="{{ asset('public/' . $user->image_path) }}" alt="{{ $userName }}" width="100" height="100">
+                                <img src="{{ asset(($user->image_path) ? 'public/' . $user->image_path : '') }}"
+                                     alt="{{ $userName }}" width="100" height="100">
                             </td>
                             <td class="v-middle">
                                 @if($user->status == \App\Helpers\ConstVariable::ACTIVE_STATUS)
@@ -42,6 +46,9 @@
                                 <a href="{{ route('admin.delete', ['id' => $user->id]) }}" class="active"
                                    onclick="confirm('You want to delete {{ $userName }} ?')">
                                     <i class="fa fa-times text-danger text"></i>
+                                </a>
+                                <a href="{{ route('admin.change.password', ['id' => $user->id]) }}" class="active">
+                                    <i class="fa fa-user-secret text-info text"></i>
                                 </a>
                             </td>
                         </tr>

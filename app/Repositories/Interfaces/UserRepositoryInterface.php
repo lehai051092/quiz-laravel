@@ -13,4 +13,6 @@ interface UserRepositoryInterface
     public function deleteById($id);
 
     public function editById($id, $option);
+
+    public function changePasswordUser($id, $newPassword);
 }

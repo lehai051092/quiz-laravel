@@ -23,7 +23,7 @@ class StorageImageTrait
 
             return [
                 'file_name' => $fileNameOrigin,
-                'file_path' => Storage::url($filePath)
+                'file_path' => Storage::url($filePath),
             ];
         }
 

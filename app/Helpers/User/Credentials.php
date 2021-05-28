@@ -4,6 +4,7 @@ namespace App\Helpers\User;
 
 use App\Helpers\ConstVariable;
 use App\Helpers\OptionAbstract;
+use Illuminate\Support\Facades\Hash;
 
 class Credentials extends OptionAbstract {
 
@@ -15,7 +16,7 @@ class Credentials extends OptionAbstract {
     {
         return [
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => $request->password,
             'status' => ConstVariable::ACTIVE_STATUS
         ];
     }

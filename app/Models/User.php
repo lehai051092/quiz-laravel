@@ -16,4 +16,11 @@ class User extends Authenticatable
     protected $guarded = 'admin';
     protected $hidden = ['password'];
 
+    /**
+     * @return string
+     */
+    public function getAuthPassword(): string
+    {
+        return $this->password;
+    }
 }

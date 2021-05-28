@@ -3,18 +3,10 @@
 namespace App\Helpers\User;
 
 use App\Helpers\OptionAbstract;
-use App\Helpers\Traits\StorageImageTrait;
+use Illuminate\Support\Facades\Hash;
 
-class UserOption extends OptionAbstract {
-
-    private $storageImageTrait;
-
-    public function __construct(
-        StorageImageTrait $storageImageTrait
-    ) {
-        $this->storageImageTrait = $storageImageTrait;
-    }
-
+class AddFormOption extends OptionAbstract
+{
     /**
      * @param $request
      * @return array
@@ -27,10 +19,11 @@ class UserOption extends OptionAbstract {
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
             'image_path' => ($data) ? $data['file_path'] : '',
             'status' => $request->status,
             'group' => $request->group,
         ];
     }
+
 }

@@ -10,4 +10,5 @@ interface ConstVariable
     const LIMIT_PAGINATE = 9;
     const GROUP_USER_ADMIN = 'admin';
     const GROUP_USER_STAFF = 'staff';
+    const DELETE_IMAGE_UPLOAD = 1;
 }

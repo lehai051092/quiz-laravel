@@ -10,7 +10,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * @var User
      */
-    protected $user;
+    protected User $user;
 
     /**
      * UserRepository constructor.
@@ -66,5 +66,15 @@ class UserRepository implements UserRepositoryInterface
     public function editById($id, $option)
     {
         return $this->findById($id)->update($option);
+    }
+
+    /**
+     * @param $id
+     * @param $newPassword
+     * @return mixed
+     */
+    public function changePasswordUser($id, $newPassword)
+    {
+        return $this->findById($id)->update(['password' => $newPassword]);
     }
 }

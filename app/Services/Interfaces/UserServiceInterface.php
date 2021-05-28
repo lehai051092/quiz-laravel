@@ -13,4 +13,6 @@ interface UserServiceInterface
     public function deleteById($id);
 
     public function editById($id, $request);
+
+    public function changePasswordUser($id, $request);
 }

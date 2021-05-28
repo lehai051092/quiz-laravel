@@ -2,33 +2,43 @@
 
 namespace App\Services;
 
-use App\Helpers\User\UserOption;
+use App\Helpers\User\AddFormOption;
+use App\Helpers\User\EditFormOption;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\Interfaces\UserServiceInterface;
+use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserServiceInterface
 {
     /**
      * @var UserRepositoryInterface
      */
-    protected $userRepository;
+    protected UserRepositoryInterface $userRepository;
 
     /**
-     * @var UserOption
+     * @var AddFormOption
      */
-    protected $userOption;
+    protected AddFormOption $addFormOption;
+
+    /**
+     * @var EditFormOption
+     */
+    protected EditFormOption $editFormOption;
 
     /**
      * UserService constructor.
      * @param UserRepositoryInterface $userRepository
-     * @param UserOption $userOption
+     * @param AddFormOption $addFormOption
+     * @param EditFormOption $editFormOption
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        UserOption $userOption
+        AddFormOption $addFormOption,
+        EditFormOption $editFormOption
     ) {
         $this->userRepository = $userRepository;
-        $this->userOption = $userOption;
+        $this->addFormOption = $addFormOption;
+        $this->editFormOption = $editFormOption;
     }
 
     /**
@@ -46,7 +56,7 @@ class UserService implements UserServiceInterface
      */
     public function addUser($request)
     {
-        $option = $this->userOption->optionArray($request);
+        $option = $this->addFormOption->optionArray($request);
         return $this->userRepository->addUser($option);
     }
 
@@ -75,7 +85,17 @@ class UserService implements UserServiceInterface
      */
     public function editById($id, $request)
     {
-        $option = $this->userOption->optionArray($request);
+        $option = $this->editFormOption->optionArray($request);
         return $this->userRepository->editById($id, $option);
+    }
+
+    /**
+     * @param $id
+     * @param $request
+     * @return mixed
+     */
+    public function changePasswordUser($id, $request)
+    {
+        return $this->userRepository->changePasswordUser($id, Hash::make($request->new_password));
     }
 }
