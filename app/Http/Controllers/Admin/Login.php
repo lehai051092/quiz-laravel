@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\User\Credentials;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,19 +17,19 @@ use Illuminate\Support\Facades\Session;
 class Login extends Controller
 {
     /**
-     * @var \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     * @var Guard|StatefulGuard
      */
     private $guard;
 
     /**
      * @var Credentials
      */
-    protected $credentials;
+    protected Credentials $credentials;
 
     /**
      * @var Session
      */
-    protected $session;
+    protected Session $session;
 
     /**
      * Index constructor.

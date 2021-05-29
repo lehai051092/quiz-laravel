@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Admin;
 
 use App\Helpers\User\AddFormOption;
 use App\Helpers\User\EditFormOption;
-use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Services\Interfaces\UserServiceInterface;
+use App\Repositories\Admin\Interfaces\UserRepositoryInterface;
+use App\Services\Admin\Interfaces\UserServiceInterface;
 use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserServiceInterface

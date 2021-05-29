@@ -12,7 +12,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                            <form role="form" action="{{ route('admin.post.change.password', ['id' => $user->id]) }}"
+                            <form role="form" action="{{ route('admin.user.post.change.password', ['id' => $user->id]) }}"
                                   method="post">
                                 @csrf
                                 <div class="form-group">

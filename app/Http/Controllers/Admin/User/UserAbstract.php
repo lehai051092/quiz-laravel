@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\Interfaces\UserServiceInterface;
-use Illuminate\Support\Facades\Auth;
+use App\Services\Admin\Interfaces\UserServiceInterface;
 
 abstract class UserAbstract extends Controller
 {
     /**
      * @var UserServiceInterface
      */
-    protected $userService;
+    protected UserServiceInterface $userService;
 
     /**
      * UserAbstract constructor.

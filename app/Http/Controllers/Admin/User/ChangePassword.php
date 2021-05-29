@@ -35,6 +35,6 @@ class ChangePassword extends UserAbstract
             'confirm_new_password' => ['same:new_password'],
         ]);
         $this->userService->changePasswordUser($id, $request);
-        return redirect()->route('admin.all');
+        return redirect()->route('admin.user.list');
     }
 }

@@ -15,7 +15,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                            <form role="form" action="{{ route('admin.post.add') }}" enctype="multipart/form-data"
+                            <form role="form" action="{{ route('admin.user.post.add') }}" enctype="multipart/form-data"
                                   method="post">
                                 @csrf
                                 <div class="form-group">
@@ -73,8 +73,8 @@
                                             @if($errors->has('status')) style="border: solid red" @endif>
                                         <option value="">Selected</option>
                                         <option
-                                            value="{{ \App\Helpers\ConstVariable::ACTIVE_STATUS }}">
-                                            Active
+                                            value="{{ \App\Helpers\ConstVariable::ENABLE_STATUS }}">
+                                            Enable
                                         </option>
                                         <option
                                             value="{{ \App\Helpers\ConstVariable::DISABLE_STATUS }}">

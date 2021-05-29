@@ -8,8 +8,18 @@
                         <span>Users</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('admin.all') }}">All user</a></li>
-                        <li><a href="{{ route('admin.add') }}">Add user</a></li>
+                        <li><a href="{{ route('admin.user.list') }}">List user</a></li>
+                        <li><a href="{{ route('admin.user.add') }}">Add user</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-book"></i>
+                        <span>Menus</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('admin.menu.list') }}">List menu</a></li>
+                        <li><a href="{{ route('admin.menu.add') }}">Add menu</a></li>
                     </ul>
                 </li>
             </ul>

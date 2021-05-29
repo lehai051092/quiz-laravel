@@ -25,6 +25,6 @@ class Add extends UserAbstract
     public function postAdd(FormAddSubmitRequest $request): RedirectResponse
     {
         $this->userService->addUser($request);
-        return redirect()->route('admin.all');
+        return redirect()->route('admin.user.list');
     }
 }

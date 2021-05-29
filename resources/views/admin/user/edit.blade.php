@@ -15,7 +15,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                            <form role="form" action="{{ route('admin.post.edit', ['id' => $user->id]) }}"
+                            <form role="form" action="{{ route('admin.user.post.edit', ['id' => $user->id]) }}"
                                   enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="form-group image-upload">
@@ -63,9 +63,9 @@
                                     <select class="form-control m-bot15" name="status"
                                             @if($errors->has('status')) style="border: solid red" @endif>
                                         <option value="">Selected</option>
-                                        <option value="{{ \App\Helpers\ConstVariable::ACTIVE_STATUS }}"
-                                            {{ ($user->status ==  \App\Helpers\ConstVariable::ACTIVE_STATUS) ? 'selected' : ''}}>
-                                            Active
+                                        <option value="{{ \App\Helpers\ConstVariable::ENABLE_STATUS }}"
+                                            {{ ($user->status ==  \App\Helpers\ConstVariable::ENABLE_STATUS) ? 'selected' : ''}}>
+                                            Enable
                                         </option>
                                         <option value="{{ \App\Helpers\ConstVariable::DISABLE_STATUS }}"
                                             {{ ($user->status ==  \App\Helpers\ConstVariable::DISABLE_STATUS) ? 'selected' : ''}}>

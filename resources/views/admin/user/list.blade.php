@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 @section('title')
-    <title>List Form</title>
+    <title>User List Form</title>
 @endsection
 @section('section')
     <div class="table-agile-info">
@@ -32,7 +32,7 @@
                                      alt="{{ $userName }}" width="100" height="100">
                             </td>
                             <td class="v-middle">
-                                @if($user->status == \App\Helpers\ConstVariable::ACTIVE_STATUS)
+                                @if($user->status == \App\Helpers\ConstVariable::ENABLE_STATUS)
                                     Active
                                 @else
                                     Disable
@@ -40,14 +40,14 @@
                             </td>
                             <td class="v-middle">{{ $user->group }}</td>
                             <td class="v-middle">
-                                <a href="{{ route('admin.edit', ['id' => $user->id]) }}" class="active">
+                                <a href="{{ route('admin.user.edit', ['id' => $user->id]) }}" class="active">
                                     <i class="fa fa-edit text-success text-active"></i>
                                 </a>
-                                <a href="{{ route('admin.delete', ['id' => $user->id]) }}" class="active"
+                                <a href="{{ route('admin.user.delete', ['id' => $user->id]) }}" class="active"
                                    onclick="confirm('You want to delete {{ $userName }} ?')">
                                     <i class="fa fa-times text-danger text"></i>
                                 </a>
-                                <a href="{{ route('admin.change.password', ['id' => $user->id]) }}" class="active">
+                                <a href="{{ route('admin.user.change.password', ['id' => $user->id]) }}" class="active">
                                     <i class="fa fa-user-secret text-info text"></i>
                                 </a>
                             </td>

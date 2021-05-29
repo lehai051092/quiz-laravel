@@ -17,7 +17,7 @@ class Credentials extends OptionAbstract {
         return [
             'email' => $request->email,
             'password' => $request->password,
-            'status' => ConstVariable::ACTIVE_STATUS
+            'status' => ConstVariable::ENABLE_STATUS
         ];
     }
 }
