@@ -1,16 +1,20 @@
 <?php
 
+use App\Http\Controllers\Admin\Category\ListCategory;
 use App\Http\Controllers\Admin\Dashboard;
 use App\Http\Controllers\Admin\Login;
 use App\Http\Controllers\Admin\Menu\ListMenu;
 use App\Http\Controllers\Admin\Menu\Add as MenuAdd;
 use App\Http\Controllers\Admin\User\Add as UserAdd;
+use App\Http\Controllers\Admin\Category\Add as CategoryAdd;
 use App\Http\Controllers\Admin\User\All;
 use App\Http\Controllers\Admin\User\ChangePassword;
 use App\Http\Controllers\Admin\Menu\Delete as MenuDelete;
 use App\Http\Controllers\Admin\User\Delete as UserDelete;
+use App\Http\Controllers\Admin\Category\Delete as CategoryDelete;
 use App\Http\Controllers\Admin\User\Edit as UserEdit;
 use App\Http\Controllers\Admin\Menu\Edit as MenuEdit;
+use App\Http\Controllers\Admin\Category\Edit as CategoryEdit;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,5 +57,15 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/delete/{id}', [MenuDelete::class, 'deleteById'])->name('admin.menu.delete');
         Route::get('/edit/{id}', [MenuEdit::class, 'getFormEdit'])->name('admin.menu.edit');
         Route::post('/edit/{id}', [MenuEdit::class, 'postEdit'])->name('admin.menu.post.edit');
+    });
+
+    // Category
+    Route::prefix('category')->group(function () {
+        Route::get('/', [ListCategory::class, 'getList'])->name('admin.category.list');
+        Route::get('/add', [CategoryAdd::class, 'getFormAdd'])->name('admin.category.add');
+        Route::post('/add', [CategoryAdd::class, 'postAdd'])->name('admin.category.post.add');
+        Route::get('/delete/{id}', [CategoryDelete::class, 'deleteById'])->name('admin.category.delete');
+        Route::get('/edit/{id}', [CategoryEdit::class, 'getFormEdit'])->name('admin.category.edit');
+        Route::post('/edit/{id}', [CategoryEdit::class, 'postEdit'])->name('admin.category.post.edit');
     });
 });

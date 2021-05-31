@@ -47,7 +47,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>Status</label>
+                                    <label>Parent</label>
                                     <select class="form-control m-bot15" name="parent_id">
                                         <option value="{{ \App\Helpers\ConstVariable::ROOT_PARENT }}">Root Menu</option>
                                         {!! $htmlOption !!}

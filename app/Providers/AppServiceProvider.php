@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\Admin\CategoryRepository;
+use App\Repositories\Admin\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\MenuRepositoryInterface;
 use App\Repositories\Admin\Interfaces\UserRepositoryInterface;
 use App\Repositories\Admin\MenuRepository;
 use App\Repositories\Admin\UserRepository;
+use App\Services\Admin\CategoryService;
+use App\Services\Admin\Interfaces\CategoryServiceInterface;
 use App\Services\Admin\Interfaces\MenuServiceInterface;
 use App\Services\Admin\Interfaces\UserServiceInterface;
 use App\Services\Admin\MenuService;
@@ -27,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
         // Menu
         $this->app->singleton(MenuRepositoryInterface::class, MenuRepository::class);
         $this->app->singleton(MenuServiceInterface::class, MenuService::class);
+        // Category
+        $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->singleton(CategoryServiceInterface::class, CategoryService::class);
     }
 
     /**

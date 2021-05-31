@@ -22,6 +22,16 @@
                         <li><a href="{{ route('admin.menu.add') }}">Add menu</a></li>
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-list"></i>
+                        <span>Categories</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('admin.category.list') }}">List category</a></li>
+                        <li><a href="{{ route('admin.category.add') }}">Add category</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

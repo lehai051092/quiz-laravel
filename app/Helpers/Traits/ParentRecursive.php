@@ -15,16 +15,16 @@ class ParentRecursive
      * @param $currentId
      * @return string
      */
-    public function getParentRecursive($data, $id, $parentId, $currentId, $text = ''): string
+    public function getParentRecursiveWhereCurrentId($data, $id, $parentId, $currentId, $text = ''): string
     {
         foreach ($data as $key => $value) {
             if ($value['parent_id'] == $id && $currentId != $value['id']) {
-                if (isset($parentId) && $parentId == $value['id']) {
+                if (!empty($parentId) && $parentId == $value['id']) {
                     $this->html .= "<option selected value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
                 } else {
                     $this->html .= "<option value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
                 }
-                $this->getParentRecursive($data, $value['id'], $parentId, $currentId, $text . '----');
+                $this->getParentRecursiveWhereCurrentId($data, $value['id'], $parentId, $currentId, $text . '----');
             }
         }
 
@@ -37,12 +37,12 @@ class ParentRecursive
      * @param string $text
      * @return string
      */
-    public function getParent($data, $id, $text = ''): string
+    public function getParentRecursive($data, $id, $text = ''): string
     {
         foreach ($data as $key => $value) {
-            if ($value['menu_parent_id'] == $id) {
-                $this->html .= "<p>" . $text . $value['menu_name'] . "</p>";
-                $this->getMenusParent($data, $value['menu_id'], $text . '----');
+            if ($value['parent_id'] == $id) {
+                $this->html .= "<p>" . $text . $value['name'] . "</p>";
+                $this->getParentRecursive($data, $value['id'], $text . '----');
             }
         }
 

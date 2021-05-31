@@ -15,4 +15,6 @@ interface MenuRepositoryInterface
     public function deleteMenu($id);
 
     public function updateMenu($id, $option);
+
+    public function getMenuAvailable();
 }

@@ -59,7 +59,7 @@ class MenuService implements MenuServiceInterface
     public function getMenuRecursive($parentId, $currentMenuId): string
     {
         $data = $this->menuRepository->getData();
-        return $this->parentRecursive->getParentRecursive($data, $id = ConstVariable::ROOT_PARENT, $parentId, $currentMenuId);
+        return $this->parentRecursive->getParentRecursiveWhereCurrentId($data, $id = ConstVariable::ROOT_PARENT, $parentId, $currentMenuId);
     }
 
     /**
@@ -97,5 +97,16 @@ class MenuService implements MenuServiceInterface
     {
         $option = $this->formOption->optionArray($request);
         return $this->menuRepository->updateMenu($id, $option);
+    }
+
+    /**
+     * @param $parentId
+     * @param $currentMenuId
+     * @return string
+     */
+    public function getMenuRecursiveAvailable($parentId, $currentMenuId): string
+    {
+        $data = $this->menuRepository->getMenuAvailable();
+        return $this->parentRecursive->getParentRecursiveWhereCurrentId($data, $id = ConstVariable::ROOT_PARENT, $parentId, $currentMenuId);
     }
 }

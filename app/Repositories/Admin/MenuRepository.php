@@ -76,4 +76,12 @@ class MenuRepository implements MenuRepositoryInterface
     {
         return $this->findById($id)->update($option);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMenuAvailable()
+    {
+        return $this->menu->where('status', '1')->get();
+    }
 }

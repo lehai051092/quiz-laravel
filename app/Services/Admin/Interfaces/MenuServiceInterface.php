@@ -15,4 +15,6 @@ interface MenuServiceInterface
     public function findById($id);
 
     public function updateMenu($id, $request);
+
+    public function getMenuRecursiveAvailable($parentId, $currentMenuId);
 }

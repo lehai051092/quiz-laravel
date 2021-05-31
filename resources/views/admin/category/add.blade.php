@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 @section('title')
-    <title>Menu Add Form</title>
+    <title>Category Add Form</title>
 @endsection
 @section('section')
     <div class="form-w3layouts">
@@ -8,11 +8,11 @@
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Menu Add Form
+                        Category Add Form
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                            <form role="form" action="{{ route('admin.menu.post.add') }}" method="post">
+                            <form role="form" action="{{ route('admin.category.post.add') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label>Name</label>
@@ -41,10 +41,10 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>Parent</label>
-                                    <select class="form-control m-bot15" name="parent_id">
-                                        <option value="{{ \App\Helpers\ConstVariable::ROOT_PARENT }}">Root Menu</option>
-                                        {!! $htmlOption !!}
+                                    <label>Menu</label>
+                                    <select class="form-control m-bot15" name="menu_id">
+                                        <option value="">Selected</option>
+                                        {!! $htmlMenuOption !!}
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-info">Submit</button>
